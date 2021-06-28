@@ -1,0 +1,21 @@
+//activate virtual environment ---> 
+venv\Scripts\activate
+---------------------------------
+//install django apps and managment commands----->
+py manage.py makemigrations --dry-run --verbosity 3
+py manage.py runserver
+py manage.py createsuperuser 
+pip install coverage
+coverage run --omit='*/venv/*' manage.py test
+coverage html
+pip install djangorestframework
+pip install simplejwt
+pip install djangorestframework-simplejwt
+pip install django-cors-headers
+----------------------------------
+# Permissions:
+# AllowAny
+# IsAuthenticated
+# IsAdminUser
+# IsAuthenticatedOrReadOnly
+--------------------------------
