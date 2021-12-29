@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE
 from django.utils import timezone
 from django.conf import settings
+from ckeditor.fields import RichTextField
 # settings.AUTH_USER_MODEL
 # Create your models here.
 
@@ -25,8 +26,9 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT, default=1)
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=CASCADE, related_name='blog_posts')
-    body = models.TextField(null=True)
-
+    brief = models.TextField(null=True, blank=True)
+    body = RichTextField(null=True, blank=True)
+    image = models.ImageField(upload_to='images/', blank=True)
     slug = models.SlugField(max_length=250, unique_for_date='published')
 
     published = models.DateTimeField(auto_now_add=timezone.now)
