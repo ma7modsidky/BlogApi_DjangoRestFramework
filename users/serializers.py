@@ -29,7 +29,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
         return instance
 
 class UpdateUserSerializer(serializers.ModelSerializer):
-    image = serializers.ImageField(use_url=False, required=False)
+    image = serializers.ImageField(required=False)
     
     class Meta:
         model = NewUser

@@ -44,6 +44,7 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PostSerializer
     queryset = Post.postobjects.all()
     permission_classes = [IsAuthenticated,]
+    parser_classes = [FormParser, MultiPartParser]
 
 class CommentCreate(generics.CreateAPIView):
     queryset = Comment.objects.all()

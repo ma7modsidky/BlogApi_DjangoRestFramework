@@ -16,7 +16,7 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.generics import ListAPIView, UpdateAPIView
+from rest_framework.generics import ListAPIView, UpdateAPIView , RetrieveAPIView
 from .serializers import CustomUserSerializer, UpdateUserSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny,IsAuthenticated
@@ -93,3 +93,7 @@ class UpdateUser(UpdateAPIView):
     permission_classes = [UpdateUserPermission]
     
 
+class UserDetail(RetrieveAPIView):
+    queryset = NewUser.objects.all()
+    serializer_class = UpdateUserSerializer
+    permission_classes = [IsAuthenticated]
