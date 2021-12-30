@@ -156,7 +156,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://127.0.0.1:8000",
     "http://localhost:3000",
-    "https://blog-vital.herokuapp.com/",
+    "https://blog-vital.herokuapp.com",
     
 ]
 
@@ -195,3 +195,4 @@ CKEDITOR_CONFIGS = {
 
 WHITENOISE_USE_FINDERS = True
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
