@@ -23,7 +23,7 @@ class Post(models.Model):
             return queryset
 
     title = models.CharField(max_length=100)
-    category = models.ForeignKey(Category, on_delete=models.PROTECT, default=1)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT,)
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=CASCADE, related_name='blog_posts')
     brief = models.TextField(null=True, blank=True)

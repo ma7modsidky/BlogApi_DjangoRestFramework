@@ -41,9 +41,10 @@ class PostSerializer(serializers.ModelSerializer):
 
 class PostCreateSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(required=False)
+    category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
     class Meta:
         model = Post
-        fields = ('title', 'brief', 'body', 'status', 'image' , 'author')
+        fields = ('title','category','brief', 'body', 'status', 'image' , 'author')
 
 
          

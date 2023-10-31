@@ -1,0 +1,12 @@
+autopep8
+pylint
+Django
+django-ckeditor
+django-cors-headers
+django-filter
+django-js-asset
+djangorestframework
+djangorestframework-simplejwt
+gunicorn
+Pillow
+whitenoise
