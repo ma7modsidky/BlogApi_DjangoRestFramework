@@ -23,9 +23,9 @@ class Post(models.Model):
             return queryset
 
     title = models.CharField(max_length=100)
-    category = models.ForeignKey(Category, on_delete=models.PROTECT,)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, default=1)
     author = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=CASCADE, related_name='blog_posts')
+        settings.AUTH_USER_MODEL, on_delete=CASCADE, related_name='blog_posts', default=1)
     brief = models.TextField(null=True, blank=True)
     body = RichTextField(null=True, blank=True)
     image = models.ImageField(upload_to='images/', blank=True)

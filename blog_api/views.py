@@ -14,11 +14,13 @@ from rest_framework.permissions import (
     IsAuthenticated,
     IsAuthenticatedOrReadOnly,
 )
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.parsers import FormParser, MultiPartParser
 from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
-
+class PostPagination(PageNumberPagination):
+    page_size = 6
 
 class PostList(generics.ListCreateAPIView):
     queryset = Post.postobjects.all()
@@ -26,6 +28,8 @@ class PostList(generics.ListCreateAPIView):
     parser_classes = [FormParser, MultiPartParser]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ("category__name",)
+    pagination_class = PostPagination
+
 
     def get_serializer_class(self):
         if self.request.method == "POST":
@@ -48,6 +52,7 @@ class UserPosts(generics.ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permissions_classes = [IsAuthenticated]
+    pagination_class = PostPagination
 
     def get_queryset(self):
         """
